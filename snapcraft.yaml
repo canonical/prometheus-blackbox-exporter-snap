@@ -1,6 +1,6 @@
 name: prometheus-blackbox-exporter
 version: 0.5.0
-grade: devel
+grade: stable
 summary: The Prometheus Blackbox Exporter
 description: |
     The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
