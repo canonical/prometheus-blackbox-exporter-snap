@@ -1,0 +1,17 @@
+# Set the command-line arguments to pass to the server.
+ARGS=""
+
+# The following options may be set:
+#  -persistence.file string
+#        File to persist metrics. If empty, metrics are only kept in memory.
+#        WARNINIG: due to snap confinement path should be prefixed with
+#        $SNAP_DATA for example: -persistence.file $SNAP_DATA/pushgateway.persist
+#  -log.level value
+#        Only log messages with the given severity or above. Valid levels: [debug, info, warn, error, fatal, panic].
+#        (default info)
+#  -persistence.interval duration
+#        The minimum interval at which to write out the persistence file. (default 5m0s)
+#  -web.listen-address string
+#        Address to listen on for the web interface, API, and telemetry. (default ":9091")
+#  -web.telemetry-path string
+#        Path under which to expose metrics. (default "/metrics")

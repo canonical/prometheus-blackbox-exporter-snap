@@ -1,0 +1,35 @@
+name: prometheus-blackbox-exporter
+version: 0.5.0
+grade: devel
+summary: The Prometheus Blackbox Exporter
+description: |
+    The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
+confinement: strict
+apps:
+  blackbox-exporter:
+    command: 'bin/blackbox_exporter.wrapper'
+    plugs: [network-bind, network]
+    daemon: simple
+parts:
+  blackbox-exporter:
+    plugin: go
+    source: https://github.com/prometheus/blackbox_exporter.git
+    go-importpath: github.com/prometheus/blackbox_exporter
+    source-tag: v0.5.0
+  initial-config:
+    plugin: dump
+    source: .
+    organize:
+      daemon_arguments: etc/blackbox-exporter/daemon_arguments.example
+      snap_config_wrapper: bin/blackbox_exporter.wrapper
+    prime:
+      - etc/blackbox-exporter/daemon_arguments.example
+      - bin/blackbox_exporter.wrapper
+  example-config:
+    plugin: dump
+    source: https://github.com/prometheus/blackbox_exporter.git
+    source-tag: v0.5.0
+    organize:
+      blackbox.yml: etc/blackbox-exporter/blackbox.yml.example
+    prime:
+      - etc/blackbox-exporter/blackbox.yml.example
