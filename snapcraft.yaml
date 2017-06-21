@@ -6,7 +6,7 @@ description: |
     The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
 confinement: strict
 apps:
-  blackbox-exporter:
+  daemon:
     command: 'bin/blackbox_exporter.wrapper'
     plugs: [network-bind, network]
     daemon: simple
