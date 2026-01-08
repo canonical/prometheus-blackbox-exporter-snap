@@ -1,8 +1,7 @@
 name: prometheus-blackbox-exporter
 version: '0.21.1'
-grade: stable
 summary: Prometheus Blackbox Exporter
-base: core20
+base: core24
 platforms:
   amd64:
   arm64:
