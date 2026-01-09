@@ -79,6 +79,6 @@ jobs:
           author: "Noctua <webops+observability-noctua-bot@canonical.com>"
           commit-message: "chore(deps): bump prometheus-blackbox-exporter version to ${{ steps.check.outputs.release }}"
           title: "Update to prometheus-blackbox-exporter ${{ steps.check.outputs.release }}"
-          body: Automated update to follow upstream [release](https://github.com/prometheus/prometheus-blackbox-exporter/releases/tag/${{ steps.check.outputs.release }}) of prometheus-blackbox-exporter.
+          body: Automated update to follow upstream [release](https://github.com/prometheus/blackbox_exporter/releases/tag/${{ steps.check.outputs.release }}) of prometheus-blackbox-exporter.
           branch: "chore/bump-version-to-${{ steps.check.outputs.release }}"
           delete-branch: true
