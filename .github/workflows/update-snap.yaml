@@ -77,8 +77,8 @@ jobs:
           token: ${{ secrets.OBSERVABILITY_NOCTUA_TOKEN }}
           committer: "Noctua <webops+observability-noctua-bot@canonical.com>"
           author: "Noctua <webops+observability-noctua-bot@canonical.com>"
-          commit-message: "chore(deps): bump opentelemetry-collector version to ${{ steps.check.outputs.release }}"
-          title: "Update to opentelemetry-collector ${{ steps.check.outputs.release }}"
-          body: Automated update to follow upstream [release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/${{ steps.check.outputs.release }}) of opentelemetry-collector.
+          commit-message: "chore(deps): bump prometheus-blackbox-exporter version to ${{ steps.check.outputs.release }}"
+          title: "Update to prometheus-blackbox-exporter ${{ steps.check.outputs.release }}"
+          body: Automated update to follow upstream [release](https://github.com/prometheus/prometheus-blackbox-exporter/releases/tag/${{ steps.check.outputs.release }}) of prometheus-blackbox-exporter.
           branch: "chore/bump-version-to-${{ steps.check.outputs.release }}"
           delete-branch: true

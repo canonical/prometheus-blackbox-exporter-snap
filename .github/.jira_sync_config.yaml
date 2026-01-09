@@ -6,7 +6,7 @@ settings:
     not_planned: rejected
 
   components:
-    - opentelemetry-collector
+    - blackbox-exporter-machine
 
   add_gh_comment: false
   sync_description: false
