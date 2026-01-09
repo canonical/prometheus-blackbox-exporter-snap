@@ -33,6 +33,8 @@ parts:
     source-tag: v${SNAPCRAFT_PROJECT_VERSION}
     organize:
       example.yml: etc/blackbox-exporter/blackbox.yml.example
+    stage:
+      - etc/blackbox-exporter/blackbox.yml.example
     prime:
       - etc/blackbox-exporter/blackbox.yml.example
   initial-config:
@@ -41,6 +43,10 @@ parts:
     organize:
       daemon_arguments: etc/blackbox-exporter/daemon_arguments.example
       snap_config_wrapper: bin/blackbox_exporter.wrapper
+    stage:
+      - etc/blackbox-exporter/daemon_arguments.example
+      - bin/blackbox_exporter.wrapper
     prime:
       - etc/blackbox-exporter/daemon_arguments.example
       - bin/blackbox_exporter.wrapper
+
