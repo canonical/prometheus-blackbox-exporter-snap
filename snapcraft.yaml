@@ -14,6 +14,13 @@ description: |
 icon: prometheus_software_logo.svg
 source-code: https://github.com/canonical/prometheus-blackbox-exporter.git
 confinement: strict
+slots:
+  prometheus-blackbox-exporter-logs:
+    interface: content
+    content: logs
+    source:
+      read:
+        - $SNAP_COMMON/var/log/prometheus-blackbox-exporter
 apps:
   daemon:
     command: 'bin/blackbox_exporter.wrapper'
