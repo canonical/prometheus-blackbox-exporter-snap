@@ -1,10 +1,18 @@
 #!/bin/sh
 
+# Ensure log directory exists
+LOG_DIR="$SNAP_COMMON/var/log/prometheus-blackbox-exporter"
+mkdir -p "$LOG_DIR"
+
 # If it's first run copy initial config to writeable location
 test -e "${SNAP_DATA}/daemon_arguments" || cp "${SNAP}/etc/blackbox-exporter/daemon_arguments.example" "${SNAP_DATA}/daemon_arguments"
 test -e "${SNAP_DATA}/blackbox.yml" || cp "${SNAP}/etc/blackbox-exporter/blackbox.yml.example" "${SNAP_DATA}/blackbox.yml"
 
-. $SNAP_DATA/daemon_arguments
+. "$SNAP_DATA/daemon_arguments"
 
 COMMAND="${SNAP}/bin/blackbox_exporter --config.file ${SNAP_DATA}/blackbox.yml ${ARGS}"
+
+# Redirect stdout and stderr to log files inside the slot directory
+exec sh -c "$COMMAND" >> "$LOG_DIR/blackbox_exporter.log" 2>&1
+
 eval "${COMMAND}"
