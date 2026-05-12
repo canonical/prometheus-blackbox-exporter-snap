@@ -11,7 +11,7 @@ description: |
     The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP, ICMP and gRPC.
 
     This is an unofficial snap which builds and re-packs the source provided by the Prometheus team (https://github.com/prometheus/blackbox_exporter).
-icon: prometheus_software_logo.svg
+icon: snap/local/prometheus_software_logo.svg
 source-code: https://github.com/canonical/prometheus-blackbox-exporter.git
 confinement: strict
 slots:
@@ -46,7 +46,7 @@ parts:
       - etc/blackbox-exporter/blackbox.yml.example
   initial-config:
     plugin: dump
-    source: .
+    source: ./snap/local
     organize:
       daemon_arguments: etc/blackbox-exporter/daemon_arguments.example
       snap_config_wrapper: bin/blackbox_exporter.wrapper
