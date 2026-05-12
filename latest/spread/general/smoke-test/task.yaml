@@ -1,0 +1,33 @@
+summary: Verify the Prometheus Blackbox Exporter snap starts and serves metrics
+
+environment:
+  SNAP_NAME: prometheus-blackbox-exporter
+  ENDPOINT: "http://localhost:9115/metrics"
+  MAX_RETRIES: "12"
+  INTERVAL: "5"
+
+prepare: |
+  snap install "${CRAFT_ARTIFACT}" --dangerous
+
+execute: |
+  COUNT=0
+
+  while [ "$COUNT" -lt "$MAX_RETRIES" ]; do
+    if curl -sf "${ENDPOINT}" | grep -q "blackbox_exporter_build_info"; then
+      echo "✅ Blackbox exporter is serving metrics!"
+      exit 0
+    fi
+    echo "[${COUNT}] Waiting for blackbox exporter to start..."
+    COUNT=$((COUNT + 1))
+    sleep "$INTERVAL"
+  done
+
+  echo "❌ Blackbox exporter did not serve metrics in time."
+  exit 1
+
+restore: |
+  snap remove "${SNAP_NAME}" --purge || true
+
+debug: |
+  snap logs "${SNAP_NAME}" -n 50 || true
+  journalctl -xe --no-pager | tail -50 || true
