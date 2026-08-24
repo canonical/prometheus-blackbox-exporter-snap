@@ -7,6 +7,7 @@ platforms:
   arm64:
   ppc64el:
   s390x:
+  riscv64:
 description: |
     The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP, ICMP and gRPC.
 
